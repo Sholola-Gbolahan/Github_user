@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { GithubContext } from "../context/context"
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts"
 const Repos = () => {
-  const {repos} = React.useContext(GithubContext)
+  const { repos } = React.useContext(GithubContext)
   console.log(repos)
 
   const chartData = [
@@ -19,14 +19,13 @@ const Repos = () => {
       label: "Javascript",
       value: "40",
     },
-   
   ]
-  
 
   return (
     <section className="section">
       <Wrapper className="section-center">
-        <ExampleChart data={chartData}/>;
+        <Pie3D data={chartData} />
+        {/* <ExampleChart data={chartData}/>; */}
       </Wrapper>
     </section>
   )
