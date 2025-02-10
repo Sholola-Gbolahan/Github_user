@@ -4,7 +4,19 @@ import { GithubContext } from "../context/context"
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts"
 const Repos = () => {
   const { repos } = React.useContext(GithubContext)
-  console.log(repos)
+  //  for reduces we pass in the call back func and what we are trying to return from the reduce.
+  // total reference the object we're return and the Item is what we're returning
+  let languages = repos.reduce((total, item) => {
+    const { language } = item
+    // avoid if the language is null
+    if (!language) return total
+    console.log(language)
+    // grabbing values in language and setting and assigning values
+    total[language] = 30
+
+    return total
+  }, {})
+  console.log(languages)
 
   const chartData = [
     {
