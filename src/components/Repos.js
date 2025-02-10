@@ -10,13 +10,12 @@ const Repos = () => {
     const { language } = item
     // avoid if the language is null
     if (!language) return total
-    console.log(language)
-
     // if the property on the object does not exit then do something and if it does do something
     if (!total[language]) {
-      total[language] = 1
+      total[language] = { label: language, value: 1 }
     } else {
-      total[language] = total[language] + 1
+      // overidding the initial code to update if more that one language exit
+      total[language] = { ...total[language], value: total[language].value + 1 }
     }
 
     return total
