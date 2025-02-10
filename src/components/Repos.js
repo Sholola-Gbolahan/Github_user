@@ -20,6 +20,9 @@ const Repos = () => {
 
     return total
   }, {})
+
+  // converting object into an array
+  languages = Object.values(languages)
   console.log(languages)
 
   const chartData = [
