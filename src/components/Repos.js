@@ -11,8 +11,13 @@ const Repos = () => {
     // avoid if the language is null
     if (!language) return total
     console.log(language)
-    // grabbing values in language and setting and assigning values
-    total[language] = 30
+
+    // if the property on the object does not exit then do something and if it does do something
+    if (!total[language]) {
+      total[language] = 1
+    } else {
+      total[language] = total[language] + 1
+    }
 
     return total
   }, {})
