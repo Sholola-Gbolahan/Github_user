@@ -22,10 +22,12 @@ const Repos = () => {
   }, {})
 
   // converting object into an array
-  languages = Object.values(languages).sort((a, b) => {
-    // this return highest to smallest
-    return b.value - a.value
-  })
+  languages = Object.values(languages)
+    .sort((a, b) => {
+      // this return highest to smallest
+      return b.value - a.value
+    })
+    .slice(0, 5)
   console.log(languages)
 
   const chartData = [
