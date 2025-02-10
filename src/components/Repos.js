@@ -22,7 +22,10 @@ const Repos = () => {
   }, {})
 
   // converting object into an array
-  languages = Object.values(languages)
+  languages = Object.values(languages).sort((a, b) => {
+    // this return highest to smallest
+    return b.value - a.value
+  })
   console.log(languages)
 
   const chartData = [
