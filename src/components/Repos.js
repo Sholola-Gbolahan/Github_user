@@ -28,27 +28,11 @@ const Repos = () => {
       return b.value - a.value
     })
     .slice(0, 5)
-  console.log(languages)
-
-  const chartData = [
-    {
-      label: "HTML",
-      value: "160",
-    },
-    {
-      label: "CSS",
-      value: "80",
-    },
-    {
-      label: "Javascript",
-      value: "40",
-    },
-  ]
 
   return (
     <section className="section">
       <Wrapper className="section-center">
-        <Pie3D data={chartData} />
+        <Pie3D data={languages} />
         {/* <ExampleChart data={chartData}/>; */}
       </Wrapper>
     </section>
