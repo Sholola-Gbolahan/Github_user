@@ -44,7 +44,7 @@ const ChartComponent = ({ data }) => {
         theme: "fusion",
       },
       // Chart Data
-     data,
+      data,
     },
   }
 
