@@ -42,7 +42,6 @@ const Repos = () => {
       return { ...item, value: item.stars }
     })
     .slice(0, 5) // Ensures the fist five languages shows
-  console.log(mostPopular)
 
   const chartData = [
     {
@@ -64,7 +63,7 @@ const Repos = () => {
       <Wrapper className="section-center">
         <Pie3D data={mostUsed} />
         <div></div>
-        <Doughnut2D data={chartData} />
+        <Doughnut2D data={mostPopular} />
         <div></div>
       </Wrapper>
     </section>
