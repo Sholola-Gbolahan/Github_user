@@ -6,13 +6,13 @@ const Repos = () => {
   const { repos } = React.useContext(GithubContext)
   //  for reduces we pass in the call back func and what we are trying to return from the reduce.
   // total reference the object we're return and the Item is what we're returning
-  let languages = repos.reduce((total, item) => {
-    const { language } = item
+  const languages = repos.reduce((total, item) => {
+    const { language, stargazers_count } = item
     // avoid if the language is null
     if (!language) return total
     // if the property on the object does not exit then do something and if it does do something
     if (!total[language]) {
-      total[language] = { label: language, value: 1 }
+      total[language] = { label: language, value: 1, stars: stargazers_count }
     } else {
       // overidding the initial code to update if more that one language exit
       total[language] = { ...total[language], value: total[language].value + 1 }
@@ -21,13 +21,22 @@ const Repos = () => {
     return total
   }, {})
 
+  console.log(languages)
+
   // converting object into an array
-  languages = Object.values(languages)
+  const mostUsed = Object.values(languages)
     .sort((a, b) => {
       // this return highest to smallest
       return b.value - a.value
     })
     .slice(0, 5)
+
+  // Most star per language
+  // Sort by stars
+  const mostPopular = Object.values(languages).sort((a, b) => {
+    return b.stars - a.stars
+  })
+  console.log(mostPopular)
 
   const chartData = [
     {
@@ -47,7 +56,7 @@ const Repos = () => {
   return (
     <section className="section">
       <Wrapper className="section-center">
-        <Pie3D data={languages} />
+        <Pie3D data={mostUsed} />
         <div></div>
         <Doughnut2D data={chartData} />
         <div></div>
