@@ -33,9 +33,15 @@ const Repos = () => {
 
   // Most star per language
   // Sort by stars
-  const mostPopular = Object.values(languages).sort((a, b) => {
-    return b.stars - a.stars
-  })
+  const mostPopular = Object.values(languages)
+    .sort((a, b) => {
+      return b.stars - a.stars
+    })
+    .map((item) => {
+      // assigning values to stars
+      return { ...item, value: item.stars }
+    })
+    .slice(0, 5) // Ensures the fist five languages shows
   console.log(mostPopular)
 
   const chartData = [
