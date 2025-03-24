@@ -20,9 +20,6 @@ const Repos = () => {
 
     return total
   }, {})
-
-  console.log(languages)
-
   // converting object into an array
   const mostUsed = Object.values(languages)
     .sort((a, b) => {
@@ -43,6 +40,27 @@ const Repos = () => {
     })
     .slice(0, 5) // Ensures the fist five languages shows
 
+  // Stars , Forks
+
+  let { stars, forks } = repos.reduce(
+    (total, item) => {
+      // this is where we setup functionality
+      const { stargazers_count, name, forks } = item
+
+      total.stars[stargazers_count] = { label: name, value: stargazers_count }
+      return total
+    },
+    {
+      stars: {},
+      forks: {},
+    }
+  )
+
+  console.log(stars)
+  // converting stars as an object to array
+  stars = Object.values(stars).slice(-5).reverse()
+
+  console.log(stars)
   const chartData = [
     {
       label: "HTML",
@@ -62,9 +80,9 @@ const Repos = () => {
     <section className="section">
       <Wrapper className="section-center">
         <Pie3D data={mostUsed} />
-        <div></div>
+        <Column3D data={chartData} />
         <Doughnut2D data={mostPopular} />
-        <div></div>
+        <Bar3D data={chartData} />
       </Wrapper>
     </section>
   )
